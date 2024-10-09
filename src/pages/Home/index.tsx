@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { FunctionComponent } from "react";
 import { StringParam, useQueryParam, withDefault } from "use-query-params";
-import { fetchDestinationDetails } from "../../api/fake-api";
 import Combobox from "../../components/Combobox";
 import DestinationDetails from "../../components/DestinationDetails";
 import { Loader } from "../../components/Loader";
 import { Header } from "./components/Header";
 import { ErrorState } from "./components/ErrorState";
+import { fetchDestinationDetails } from "../../api";
 
 type IProps = {};
 

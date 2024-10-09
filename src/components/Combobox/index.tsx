@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { FunctionComponent, useState } from "react";
-import { fetchDestinations } from "../../api/fake-api";
 import { ErrorState } from "./components/ErrorState";
 import { LoadingState } from "./components/LoadingState";
 import { NoResultsState } from "./components/NoResultsState";
 import { ResultsList } from "./components/ResultsList";
 import { SearchInput } from "./components/SearchInput";
+import { fetchDestinations } from "../../api";
 
 type ComboboxProps = {
   onSelect: (destination: string) => void;
