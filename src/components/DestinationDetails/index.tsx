@@ -1,5 +1,9 @@
 import { FunctionComponent } from "react";
 import { Destination } from "../../types/types";
+import { Header } from "./components/Header";
+import { Description } from "./components/Description";
+import { Information } from "./components/Information";
+import { NearLocations } from "./components/NearLocations";
 
 type DestinationDetailsProps = {
   destination: Destination | null;
@@ -16,43 +20,19 @@ const DestinationDetails: FunctionComponent<DestinationDetailsProps> = ({
 
   return (
     <div className="p-6 bg-white border-2 border-gray-300 rounded-lg shadow-md mt-6">
-      {/* Destination Title */}
-      <h2 className="text-2xl font-bold text-gray-800 mb-2">
-        {destination.name}
-      </h2>
+      <Header name={destination.name} />
 
-      {/* Destination Description */}
-      <p className="text-gray-600 mb-4">{destination.description}</p>
+      <Description description={destination.description} />
 
-      {/* Location Information */}
-      <div className="mb-4">
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">
-          Location Details
-        </h3>
-        <p className="text-gray-500">
-          Latitude: {destination.latitude}, Longitude: {destination.longitude}
-        </p>
-      </div>
+      <Information
+        longitude={destination.longitude}
+        latitude={destination.latitude}
+      />
 
-      {/* Nearby Destinations */}
-      <div>
-        <h3 className="text-lg font-semibold text-gray-700 mb-2">
-          Top 5 Nearby Destinations
-        </h3>
-        <ul className="list-disc pl-5">
-          {destination.nearbyDestinations?.map((nearby) => (
-            <li key={nearby.name}>
-              <span
-                className="cursor-pointer text-blue-500 hover:underline"
-                onClick={() => onSelectNearby(nearby.name)}
-              >
-                {nearby.name}
-              </span>{" "}
-              - {Math.floor(nearby.distance ?? 0)} km away
-            </li>
-          ))}
-        </ul>
-      </div>
+      <NearLocations
+        nearbyDestinations={destination.nearbyDestinations}
+        onSelectNearby={onSelectNearby}
+      />
     </div>
   );
 };
