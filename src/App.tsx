@@ -5,8 +5,13 @@ import { QueryParamProvider } from "use-query-params";
 import { ReactRouter6Adapter } from "use-query-params/adapters/react-router-6";
 import { Home } from "./pages";
 import { PagesRoutes } from "./pages/PagesRoutes";
+import { Layout } from "./pages/Layout";
 
 const queryClient = new QueryClient();
+
+const ApplyLayout = () => {
+  return <Layout />;
+};
 
 const App = () => {
   return (
@@ -20,12 +25,17 @@ const App = () => {
           }}
         >
           <Routes>
-            <Route
-              path={PagesRoutes.default}
-              element={<Navigate to={PagesRoutes.home} />}
-            />
-            <Route path={PagesRoutes.home} element={<Home />} />
-            <Route path="*" element={<Navigate to={PagesRoutes.home} />} />
+            <Route element={<ApplyLayout />}>
+              <Route
+                path={PagesRoutes.default}
+                element={<Navigate to={PagesRoutes.home} />}
+              />
+              <Route path={PagesRoutes.home} element={<Home />} />
+
+              <Route path={PagesRoutes.home} element={<Home />} />
+
+              <Route path="*" element={<Navigate to={PagesRoutes.home} />} />
+            </Route>
           </Routes>
         </QueryParamProvider>
       </BrowserRouter>
