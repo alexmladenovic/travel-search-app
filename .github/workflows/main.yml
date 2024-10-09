@@ -1,0 +1,27 @@
+name: Production
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '20.11.0'
+      - name: Install AWS cli
+        run: sudo pip install awscli --upgrade
+      - name: Set AWS key
+        run: aws configure set aws_access_key_id ${{ secrets.AWS_DEPLOYMENT_ACCESS_KEY }}
+      - name: Set AWS secret
+        run: aws configure set aws_secret_access_key ${{ secrets.AWS_DEPLOYMENT_SECRET_KEY }}
+      - name: Install NPM dependencies
+        run: npm install
+      - name: Install sass
+        run: npm rebuild node-sass
+      - name: Build Project
+        run: CI=false NODE_ENV=production REACT_APP_ENV=production npm run build
+      - name: Upload to S3
+        run: aws s3 sync build/ 's3://travel-search-app'
