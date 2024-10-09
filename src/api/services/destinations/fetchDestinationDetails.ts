@@ -35,6 +35,5 @@ const getNearbyDestinations = (destination: Destination) => {
       ),
     }))
     .sort((a, b) => a.distance - b.distance)
-    .slice(0, 5)
-    .map((dest) => dest.name);
+    .slice(0, 5);
 };

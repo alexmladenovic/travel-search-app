@@ -7,5 +7,6 @@ export type Destination = {
   currency: string;
   latitude: number;
   longitude: number;
-  nearbyDestinations: string[];
+  distance?: number;
+  nearbyDestinations: Destination[];
 };
