@@ -15,7 +15,7 @@ const DestinationDetails: FunctionComponent<DestinationDetailsProps> = ({
   }
 
   return (
-    <div className="p-4 border-2 border-gray-300 rounded-md mt-4">
+    <div className="p-4 border-2 border-gray-300 rounded-md mt-4 shadow-lg rounded-lg">
       <h2 className="text-xl font-bold">{destination.name}</h2>
       <p>{destination.description}</p>
       <h3 className="text-lg font-semibold mt-2">Top 5 Nearby Destinations</h3>

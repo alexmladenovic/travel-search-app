@@ -7,6 +7,7 @@ import { Loader } from "../../components/Loader";
 import { Header } from "./components/Header";
 import { ErrorState } from "./components/ErrorState";
 import { fetchDestinationDetails } from "../../api";
+import { LoadingState } from "./components/LoadingState";
 
 type IProps = {};
 
@@ -43,7 +44,7 @@ const Home: FunctionComponent<IProps> = () => {
       <Header title="Travel Destination Search" />
       <Combobox onSelect={handleSelectDestination} />
       {isError && <ErrorState className="text-red-500 mt-2" error={error} />}
-      {isLoading && <Loader />}
+      {isLoading && <LoadingState />}
       {!isLoading && !isError && selectedDestination && (
         <DestinationDetails
           destination={selectedDestination}
