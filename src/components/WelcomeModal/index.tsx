@@ -1,14 +1,14 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { Fragment } from 'react'
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 interface WelcomeModalProps {
-  isOpen: boolean
-  setIsOpen: (isOpen: boolean) => void
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, setIsOpen }) => {
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
 
   return (
@@ -47,7 +47,8 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, setIsOpen }) => {
 
                 <div className="mt-2">
                   <p className="text-base text-gray-600 text-center">
-                    Each search will take 2 seconds in order to simulate a real-world scenario and demonstrate the loaders.
+                    Each search will take 2 seconds in order to simulate a
+                    real-world scenario and demonstrate the loaders.
                   </p>
                 </div>
 
@@ -68,7 +69,7 @@ const WelcomeModal: React.FC<WelcomeModalProps> = ({ isOpen, setIsOpen }) => {
         </div>
       </Dialog>
     </Transition>
-  )
-}
+  );
+};
 
-export default WelcomeModal
+export default WelcomeModal;

@@ -56,10 +56,10 @@ const Home: FunctionComponent<IProps> = () => {
   return (
     <div className="max-w-2xl mx-auto p-4">
       <WelcomeModal isOpen={isWelcomeModalOpen} setIsOpen={handleCloseModal} />
-      
+
       <Header title="Travel Destination Search" />
       <Combobox onSelect={handleSelectDestination} />
-      
+
       {isError && <ErrorState error={error} />}
       {isLoading && <LoadingState />}
       {!isLoading && !isError && selectedDestination && (
